@@ -16,8 +16,14 @@ export default function Home() {
                 />
             </header>
 
-            <main>
+            <main className="grid grid-cols-2">
+              <div>
+                1
+              </div>
               
+              <div>
+                2
+              </div>
             </main>
         </>
     );
