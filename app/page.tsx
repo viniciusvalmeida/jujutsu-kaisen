@@ -1,10 +1,25 @@
 import Image from "next/image";
 
-const getAnimeData = async () => {
-    const res = fetch("");
+type Character = {
+  character: {
+    mal_id: number
+    name: string
+  }
+}
+
+type FethResponse = {
+  data: Character[]
+}
+
+const getAnimeData = async (): Promise<FethResponse> => {
+  const res = await fetch("https://api.jikan.moe/v4/anime/40748/characters")
+    
+  return res.json()
 };
 
-export default function Home() {
+export default async function Home() {
+    const { data } = await getAnimeData()
+    
     return (
         <>
             <header className="text-white text-center flex justify-center items-center">
@@ -17,11 +32,15 @@ export default function Home() {
             </header>
 
             <main className="grid grid-cols-2">
-              <div>
-                1
+              <div className="bg-red-400/50">
+                <ul>
+                {data.map((char: Character) => (
+                  <li key={char.character.mal_id}>{char.character.name}</li>
+                ))}
+                </ul>
               </div>
               
-              <div>
+              <div className="bg-emerald-400/50">
                 2
               </div>
             </main>
