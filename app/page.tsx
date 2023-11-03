@@ -71,7 +71,7 @@ const getCharacterInfo = async (
 export default async function Home({ searchParams }: HomeProps) {
 	const { data } = (await getAnimeData()) as FethResponse;
 	const character = (await getCharacterInfo(
-		+searchParams.mal_id
+		+searchParams.mal_id || 164471
 	)) as CharacterFull;
 
 	return (
@@ -85,10 +85,10 @@ export default async function Home({ searchParams }: HomeProps) {
 				/>
 			</header>
 
-			<main className="grid grid-cols-2">
-				<div className="bg-red-400/50">
+			<main className="grid grid-cols-2 gap-4">
+				<div className="bg-slate-400/60 rounded-xl p-4 shadow-2xl shadow-slate-500">
 					<ul className="grid grid-cols-3 gap-4">
-						{data.map((char) => (
+						{data.splice(0, 27).map((char) => (
 							<li
 								key={char.character.mal_id}
 								className="cursor-pointer"
@@ -112,7 +112,7 @@ export default async function Home({ searchParams }: HomeProps) {
 					</ul>
 				</div>
 
-				<div className="bg-emerald-400/50 p-4 flex flex-col items-center space-y-4">
+				<div className="bg-slate-400/60 rounded-xl p-4 flex flex-col items-center space-y-4 shadow-2xl shadow-slate-500">
 					<Image
 						className="rounded-lg"
 						src={character.data.images.webp.image_url}
