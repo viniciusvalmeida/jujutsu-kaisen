@@ -13,7 +13,7 @@ export default function CharacterList({
 		<li
 			className={`cursor-pointer rounded-xl p-2 ${
 				char.character.mal_id === characterId ? "bg-sky-600/50" : ""
-			} hover:bg-slate-300`}
+			} hover:bg-slate-400`}
 		>
 			<Link
 				href={`/?mal_id=${char.character.mal_id}`}
