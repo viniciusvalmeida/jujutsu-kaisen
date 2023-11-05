@@ -54,17 +54,21 @@ export default async function Home({ searchParams }: HomeProps) {
 				/>
 			</header>
 
-			<main className="grid grid-cols-2 gap-4 px-4 xl:px-0">
+			<main className="grid grid-cols-[1fr_3fr] md:grid-cols-2 gap-4 px-4 xl:px-0">
 				<div className="bg-slate-400/60 rounded-xl p-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
 					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{data.splice(0, 27).map((char) => (
 							<li
 								key={char.character.mal_id}
-								className="cursor-pointer"
+								className={`cursor-pointer rounded-xl p-2 ${
+									char.character.mal_id === characterId
+										? "bg-sky-600/50"
+										: ""
+								}`}
 							>
 								<Link
 									href={`/?mal_id=${char.character.mal_id}`}
-									className="flex items-center gap-3"
+									className="flex flex-col text-center items-center md:flex-row md:text-start gap-3"
 								>
 									<Image
 										className="rounded-xl"
