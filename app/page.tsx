@@ -1,4 +1,5 @@
 import CharacterInfo from "@/components/CharacterInfo";
+import CharacterList from "@/components/CharacterList";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +9,7 @@ type HomeProps = {
 	};
 };
 
-type Character = {
+export type Character = {
 	character: {
 		mal_id: number;
 		name: string;
@@ -57,31 +58,12 @@ export default async function Home({ searchParams }: HomeProps) {
 			<main className="grid grid-cols-[1fr_3fr] md:grid-cols-2 gap-4 px-4 xl:px-0">
 				<div className="bg-slate-400/60 rounded-xl p-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
 					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{data.splice(0, 27).map((char) => (
-							<li
+						{data.map((char) => (
+							<CharacterList
 								key={char.character.mal_id}
-								className={`cursor-pointer rounded-xl p-2 ${
-									char.character.mal_id === characterId
-										? "bg-sky-600/50"
-										: ""
-								}`}
-							>
-								<Link
-									href={`/?mal_id=${char.character.mal_id}`}
-									className="flex flex-col text-center items-center md:flex-row md:text-start gap-3"
-								>
-									<Image
-										className="rounded-xl"
-										src={
-											char.character.images.webp.image_url
-										}
-										alt="Character Image"
-										width={50}
-										height={100}
-									/>
-									{char.character.name}
-								</Link>
-							</li>
+								characterId={characterId}
+								char={char}
+							/>
 						))}
 					</ul>
 				</div>
