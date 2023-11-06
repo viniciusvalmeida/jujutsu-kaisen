@@ -2,7 +2,7 @@ import { Character } from "@/app/page";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function CharacterList({
+export default function CharacterCard({
 	char,
 	characterId,
 }: {

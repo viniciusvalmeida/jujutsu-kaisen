@@ -1,7 +1,6 @@
 import CharacterInfo from "@/components/CharacterInfo";
-import CharacterList from "@/components/CharacterList";
+import CharacterCard from "@/components/CharacterCard";
 import Image from "next/image";
-import Link from "next/link";
 
 type HomeProps = {
 	searchParams: {
@@ -59,7 +58,7 @@ export default async function Home({ searchParams }: HomeProps) {
 				<div className="bg-slate-400/60 rounded-xl p-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
 					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{data.map((char) => (
-							<CharacterList
+							<CharacterCard
 								key={char.character.mal_id}
 								characterId={characterId}
 								char={char}
