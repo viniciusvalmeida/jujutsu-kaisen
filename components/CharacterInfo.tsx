@@ -32,7 +32,7 @@ const getCharacterInfo = async (
 export default async function CharacterInfo({ mal_id }: { mal_id: number }) {
 	const character = (await getCharacterInfo(mal_id)) as CharacterFull;
 	return (
-		<div className="bg-slate-400/60 max-h-[78vh] overflow-scroll rounded-xl p-4 flex flex-col items-center space-y-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
+		<div className="bg-slate-400/60 max-h-[78vh] overflow-auto rounded-xl p-4 flex flex-col items-center space-y-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
 			<Image
 				className="rounded-lg w-24 md:w-48 lg:w-72"
 				src={character.data.images.webp.image_url}

@@ -55,7 +55,7 @@ export default async function Home({ searchParams }: HomeProps) {
 			</header>
 
 			<main className="grid grid-cols-[1fr_3fr] md:grid-cols-2 gap-4 px-4 xl:px-0">
-				<div className="bg-slate-400/60 max-h-[78vh] overflow-scroll rounded-xl p-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
+				<div className="bg-slate-400/60 max-h-[78vh] overflow-auto rounded-xl p-4 shadow-2xl shadow-slate-500 backdrop-blur-sm">
 					<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 						{data.map((char) => (
 							<CharacterCard
